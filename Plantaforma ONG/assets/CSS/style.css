@@ -1,0 +1,183 @@
+/* RESET básico e variáveis */
+:root{
+  --primary: #0077b6;    /* azul principal */
+  --primary-dark: #023e8a;
+  --muted: #666;
+  --bg: #fff;
+  --card-bg: #ffffff;
+  --radius: 8px;
+  --max-width: 1000px;
+  --gap: 1rem;
+  --text: #111;
+  --accent: #006699;
+  --btn-text: #fff;
+  --form-border: #dcdcdc;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  color:var(--text);
+  background: #f6f8fa;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+}
+
+/* container central que limita largura e centraliza */
+main, .container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.25rem;
+}
+
+/* Cabeçalho: logo à esquerda, menu à direita */
+header{
+  background: var(--primary);
+  color: white;
+  padding: 0.5rem 0;
+  border-bottom: 4px solid var(--primary-dark);
+}
+header .inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.logo{height:48px; width:auto; display:block}
+
+/* navegação */
+nav ul{list-style:none;margin:0;padding:0;display:flex;gap:1rem;align-items:center}
+nav a{
+  color: white;
+  text-decoration:none;
+  padding:0.5rem 0.6rem;
+  font-weight:600;
+  display:inline-block;
+}
+nav a:hover, nav a:focus{background:rgba(255,255,255,0.08);border-radius:6px;}
+
+/* Hero / título principal */
+.hero{
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  background: linear-gradient(90deg, rgba(0,119,182,0.06), rgba(2,62,138,0.02));
+  border-radius: 10px;
+}
+.hero h1{
+  margin:0 0 .25rem 0;
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  color: var(--primary-dark);
+}
+.hero p{margin:0;color:var(--muted)}
+
+/* Seções */
+section{margin:1.15rem 0;padding:0}
+h2{color:var(--primary-dark);margin:0 0 .6rem 0}
+
+/* Formulário: card centralizado, visual limpo */
+form{
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: 0 6px 20px rgba(16,24,40,0.06);
+  border: 1px solid rgba(16,24,40,0.04);
+  max-width: 720px;
+  margin: 0.75rem 0;
+}
+
+/* fieldset e legend */
+fieldset{
+  border: 1px solid var(--form-border);
+  padding: 0.85rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+legend{font-weight:700;padding:0 .5rem}
+
+/* Form grid: mobile-first (single column) */
+.form-row{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: .6rem;
+  margin-top: .25rem;
+}
+label{font-size:.95rem;font-weight:600;color:#222;display:block;margin-bottom:.25rem}
+input, select, textarea{
+  width:100%;
+  padding: .55rem .6rem;
+  border:1px solid #ccc;
+  border-radius:6px;
+  font-size: .95rem;
+  background:white;
+}
+textarea{min-height:100px;resize:vertical}
+
+/* small helper text */
+small{color:var(--muted);display:block;margin-top:.25rem}
+
+/* Botões */
+.button-row{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.6rem}
+button, .btn{
+  background: var(--primary);
+  color: var(--btn-text);
+  padding: .7rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight:600;
+}
+button.secondary, .btn.secondary{
+  background: #e9eef6;
+  color: var(--primary-dark);
+  border:1px solid rgba(2,62,138,0.06);
+}
+
+/* Footer */
+footer{
+  margin-top:2rem;
+  padding:1rem 0;
+  background: var(--primary-dark);
+  color:white;
+  text-align:center;
+}
+
+/* Responsividade: telas médias e maiores */
+@media(min-width:700px){
+  /* header inner aumenta o padding */
+  header .inner{padding:0 1.25rem}
+
+  /* coloque nav à direita e logo à esquerda por flex no header.inner (já feito) */
+
+  /* form + grid: duas colunas para campos quando houver espaço */
+  .form-row.two-col{
+    grid-template-columns: 1fr 1fr;
+    gap: .75rem;
+    align-items:center;
+  }
+
+  /* ex: para campos CPF e telefone em mesma linha (deixe o HTML com classes se quiser) */
+  .inline {
+    display:flex;
+    gap:.6rem;
+    align-items:center;
+  }
+
+  /* hero com maior padding */
+  .hero{padding:1.75rem}
+}
+
+/* foco acessível */
+a:focus, button:focus, input:focus, select:focus, textarea:focus{
+  outline: 3px solid rgba(0,119,182,0.12);
+  outline-offset: 2px;
+}
+
+/* utilitários */
+.center{text-align:center}
+.small{font-size:.88rem;color:var(--muted)}
